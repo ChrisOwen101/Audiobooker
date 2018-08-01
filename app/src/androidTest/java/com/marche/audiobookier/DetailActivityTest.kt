@@ -2,7 +2,6 @@ package com.marche.audiobookier
 
 import com.marche.audiobookier.common.TestComponentRule
 import com.marche.audiobookier.common.TestDataFactory
-import com.marche.audiobookier.data.model.Pokemon
 import com.marche.audiobookier.features.detail.DetailActivity
 import com.marche.audiobookier.util.ErrorTestUtil
 import android.support.test.InstrumentationRegistry

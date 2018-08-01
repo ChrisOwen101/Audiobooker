@@ -3,7 +3,6 @@ package com.marche.audiobookier
 import com.nhaarman.mockito_kotlin.*
 import com.marche.audiobookier.common.TestDataFactory
 import com.marche.audiobookier.data.DataManager
-import com.marche.audiobookier.data.model.Pokemon
 import com.marche.audiobookier.features.detail.DetailMvpView
 import com.marche.audiobookier.features.detail.DetailPresenter
 import com.marche.audiobookier.util.RxSchedulersOverrideRule

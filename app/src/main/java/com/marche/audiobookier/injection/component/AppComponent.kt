@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import dagger.Component
 import com.marche.audiobookier.data.DataManager
-import com.marche.audiobookier.data.remote.PokemonApi
+import com.marche.audiobookier.data.remote.RemoteApi
 import com.marche.audiobookier.injection.ApplicationContext
 import com.marche.audiobookier.injection.module.AppModule
 import javax.inject.Singleton
@@ -20,5 +20,5 @@ interface AppComponent {
 
     fun dataManager(): DataManager
 
-    fun pokemonApi(): PokemonApi
+    fun pokemonApi(): RemoteApi
 }

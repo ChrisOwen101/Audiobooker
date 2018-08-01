@@ -5,7 +5,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import com.marche.audiobookier.data.DataManager
-import com.marche.audiobookier.data.remote.PokemonApi
+import com.marche.audiobookier.data.remote.RemoteApi
 import com.marche.audiobookier.injection.ApplicationContext
 import org.mockito.Mockito.mock
 import javax.inject.Singleton
@@ -41,8 +41,8 @@ class ApplicationTestModule(private val application: Application) {
 
     @Provides
     @Singleton
-    internal fun provideMvpBoilerplateService(): PokemonApi {
-        return mock(PokemonApi::class.java)
+    internal fun provideMvpBoilerplateService(): RemoteApi {
+        return mock(RemoteApi::class.java)
     }
 
 }

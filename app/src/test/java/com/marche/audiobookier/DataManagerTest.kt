@@ -1,11 +1,9 @@
 package com.marche.audiobookier
 
-import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
 import com.marche.audiobookier.common.TestDataFactory
 import com.marche.audiobookier.data.DataManager
-import com.marche.audiobookier.data.model.PokemonListResponse
-import com.marche.audiobookier.data.remote.PokemonApi
+import com.marche.audiobookier.data.remote.RemoteApi
 import com.marche.audiobookier.util.RxSchedulersOverrideRule
 import io.reactivex.Single
 import org.junit.Rule
@@ -24,7 +22,7 @@ class DataManagerTest {
     val name = "charmander"
     val pokemon = TestDataFactory.makePokemon(name)
 
-    val mockPokemonApi: PokemonApi = mock {
+    val mockPokemonApi: RemoteApi = mock {
         on { getPokemonList(anyInt()) } doReturn Single.just(pokemonListResponse)
         on { getPokemon(anyString()) } doReturn Single.just(pokemon)
     }

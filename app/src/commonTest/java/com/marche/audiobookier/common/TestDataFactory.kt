@@ -1,9 +1,6 @@
 package com.marche.audiobookier.common
 
 import com.marche.audiobookier.data.model.NamedResource
-import com.marche.audiobookier.data.model.Pokemon
-import com.marche.audiobookier.data.model.Sprites
-import com.marche.audiobookier.data.model.Statistic
 import java.util.*
 
 /**

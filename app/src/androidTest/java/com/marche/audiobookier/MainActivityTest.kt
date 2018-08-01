@@ -9,7 +9,6 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.marche.audiobookier.common.TestComponentRule
 import com.marche.audiobookier.common.TestDataFactory
-import com.marche.audiobookier.data.model.Pokemon
 import com.marche.audiobookier.features.main.MainActivity
 import com.marche.audiobookier.util.ErrorTestUtil
 import io.reactivex.Single

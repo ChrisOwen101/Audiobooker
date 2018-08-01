@@ -23,7 +23,7 @@ constructor(@ApplicationContext context: Context) {
 
     companion object {
 
-        val PREF_FILE_NAME = "mvpstarter_pref_file"
+        val PREF_FILE_NAME = "audiobooker_pref_file"
     }
 
 }

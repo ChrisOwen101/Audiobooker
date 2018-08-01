@@ -2,7 +2,7 @@ package com.marche.audiobookier.injection.module
 
 import dagger.Module
 import dagger.Provides
-import com.marche.audiobookier.data.remote.PokemonApi
+import com.marche.audiobookier.data.remote.RemoteApi
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -14,6 +14,6 @@ class ApiModule {
 
     @Provides
     @Singleton
-    internal fun providePokemonApi(retrofit: Retrofit): PokemonApi =
-            retrofit.create(PokemonApi::class.java)
+    internal fun providePokemonApi(retrofit: Retrofit): RemoteApi =
+            retrofit.create(RemoteApi::class.java)
 }
