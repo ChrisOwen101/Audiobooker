@@ -2,6 +2,7 @@ package com.marche.audiobookier.features.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.BottomSheetBehavior
 import com.jaiselrahman.filepicker.activity.FilePickerActivity
 import com.jaiselrahman.filepicker.config.Configurations
 import com.marche.audiobookier.R
@@ -22,6 +23,9 @@ class MainActivity : BaseActivity(), MainMvpView {
         setSupportActionBar(tToolbar)
 
         fabAddAudiobook.setOnClickListener { mainPresenter.onFABClicked() }
+
+        val bottomSheetBehavior = BottomSheetBehavior.from(llBottomSheet)
+        bottomSheetBehavior.setBottomSheetCallback(mainPresenter.bottomSheetCallback)
     }
 
     override fun navigateToFilePickerActivity() {
@@ -37,6 +41,10 @@ class MainActivity : BaseActivity(), MainMvpView {
                 .setSuffixes("mp3","m4b")
                 .build())
         startActivityForResult(intent, 11)
+    }
+
+    override fun onBottomSheetSlide(offset: Float) {
+        fabAddAudiobook.animate().scaleX(1 - offset).scaleY(1 - offset).setDuration(0).start()
     }
 
     override fun layoutId() = R.layout.activity_main
