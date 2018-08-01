@@ -9,8 +9,12 @@ import javax.inject.Inject
 class MainPresenter @Inject
 constructor(private val dataManager: DataManager) : BasePresenter<MainMvpView>() {
 
-    fun getAudiobooks(limit: Int) {
+    fun getAudiobooks() {
         checkViewAttached()
+    }
 
+    fun onFABClicked() {
+        checkViewAttached()
+        mvpView?.navigateToFilePickerActivity()
     }
 }

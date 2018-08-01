@@ -21,9 +21,7 @@ import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.*
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -335,8 +333,10 @@ fun View.getDisplaySize() = context.getDisplaySize()
 fun SnapHelper.snapToPosition(recyclerView: RecyclerView, position: Int) {
     recyclerView.apply {
         val view = findViewHolderForAdapterPosition(position)?.itemView
-        val snapPositions = view?.let {
-            calculateDistanceToFinalSnap(layoutManager, it)
+        val snapPositions = view?.let { letView ->
+            layoutManager?.let{
+                calculateDistanceToFinalSnap(it, letView)
+            }
         }
 
         snapPositions?.let { smoothScrollBy(it[0], it[1]) }
