@@ -2,10 +2,12 @@ package com.marche.audiobookier.injection.module
 
 import android.app.Activity
 import android.content.Context
-
+import com.marche.audiobookier.data.model.MyObjectBox
+import com.marche.audiobookier.injection.ActivityContext
+import com.marche.audiobookier.injection.ApplicationContext
 import dagger.Module
 import dagger.Provides
-import com.marche.audiobookier.injection.ActivityContext
+import io.objectbox.BoxStore
 
 @Module
 class ActivityModule(private val activity: Activity) {
@@ -19,5 +21,12 @@ class ActivityModule(private val activity: Activity) {
     @ActivityContext
     internal fun providesContext(): Context {
         return activity
+    }
+
+    @Provides
+    fun provideBoxStore(@ApplicationContext context: Context): BoxStore {
+        return MyObjectBox.builder()
+                .androidContext(context)
+                .build()
     }
 }

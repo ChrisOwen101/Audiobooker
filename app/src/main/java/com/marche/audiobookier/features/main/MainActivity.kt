@@ -3,6 +3,7 @@ package com.marche.audiobookier.features.main
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import com.marche.audiobookier.R
+import com.marche.audiobookier.data.local.LocalRepository
 import com.marche.audiobookier.features.base.BaseActivity
 import com.marche.audiobookier.util.FilePicker
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,6 +13,9 @@ class MainActivity : BaseActivity(), MainMvpView {
 
     @Inject
     lateinit var mainPresenter: MainPresenter
+
+    @Inject
+    lateinit var localRepository: LocalRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

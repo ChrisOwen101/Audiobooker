@@ -26,7 +26,7 @@
         android:elevation="3dp"
         app:elevation="3dp"
         app:behavior_hideable="true"
-        app:behavior_peekHeight="80dp"
+        app:behavior_peekHeight="56dp"
         app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
         <TextView
