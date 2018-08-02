@@ -121,6 +121,10 @@ dependencies {
     androidTestImplementation androidTestsLibs
     testImplementation unitTestLibs
     androidTestImplementation androidTestsLibs
+
+    implementation 'com.mikepenz:fastadapter:3.2.8'
+    implementation 'com.mikepenz:fastadapter-commons:3.2.8'
+
 }
 
 // Log out test results to console
