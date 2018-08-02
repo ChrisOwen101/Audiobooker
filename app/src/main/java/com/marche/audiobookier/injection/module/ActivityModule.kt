@@ -23,10 +23,5 @@ class ActivityModule(private val activity: Activity) {
         return activity
     }
 
-    @Provides
-    fun provideBoxStore(@ApplicationContext context: Context): BoxStore {
-        return MyObjectBox.builder()
-                .androidContext(context)
-                .build()
-    }
+
 }
