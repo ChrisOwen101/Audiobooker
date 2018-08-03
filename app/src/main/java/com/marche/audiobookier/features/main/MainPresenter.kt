@@ -35,11 +35,12 @@ constructor(private val dataManager: DataManager, private val localRepository: L
     fun onNewAudiobooksChosen(files : List<MediaFile>){
         checkViewAttached()
 
-        val entries = files.map {
+        files.map {
             AudiobookEntry(name=it.name,  path=it.path)
+        }.forEach {
+            localRepository.storeAudiobookEntry(it)
         }
 
-        entries.forEach { localRepository.storeAudiobookEntry(it) }
         mvpView?.onAudiobooksUpdated(localRepository.getAllAudiobookEntries())
     }
 }

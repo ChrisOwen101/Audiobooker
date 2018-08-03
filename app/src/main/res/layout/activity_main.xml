@@ -21,13 +21,12 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"/>
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:id="@+id/llBottomSheet"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="match_parent"
         android:background="@android:color/darker_gray"
         android:orientation="vertical"
         android:elevation="3dp"

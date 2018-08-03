@@ -54,7 +54,6 @@ class MainActivity : BaseActivity(), MainMvpView {
     }
 
     override fun onAudiobooksUpdated(list: List<AudiobookEntry>) {
-        Timber.d("List " + list.toString())
         val adapter = AudiobookAdapter(list, this)
         rvRecyclerView.layoutManager = LinearLayoutManager(this)
         rvRecyclerView.adapter = adapter

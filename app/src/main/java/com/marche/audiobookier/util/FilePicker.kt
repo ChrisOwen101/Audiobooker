@@ -15,7 +15,7 @@ object FilePicker {
                     .setShowFiles(true)
                     .setShowImages(false)
                     .setShowVideos(false)
-                    .setMaxSelection(1)
+                    .setMaxSelection(100)
                     .setSkipZeroSizeFiles(true)
                     .setSuffixes("mp3","m4b")
                     .build())
