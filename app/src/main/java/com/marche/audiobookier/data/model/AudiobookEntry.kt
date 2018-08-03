@@ -6,6 +6,6 @@ import java.util.*
 
 @Entity
 data class AudiobookEntry(
-        @Id var id: Long = Random().nextLong(),
+        @Id var id: Long = 0,
         val name: String,
         val path: String)
