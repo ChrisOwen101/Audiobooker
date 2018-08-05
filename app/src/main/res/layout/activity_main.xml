@@ -3,31 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/primary">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/tToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:theme="@style/AppTheme.ToolbarStyle" />
+            app:theme="@style/AppTheme.ToolbarStyle"
+            app:elevation="0dp"/>
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="3sp"
+        android:background="@drawable/background_recycler_view"
+        android:elevation="3dp"/>
 
     <LinearLayout
         android:id="@+id/llBottomSheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
         android:orientation="vertical"
         android:elevation="3dp"
         app:elevation="3dp"
@@ -38,7 +44,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/colorAccent"
+            android:background="@drawable/background_controller"
             android:gravity="center"
             android:text="Peek"
             android:textColor="@android:color/white" />
@@ -47,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:background="@color/primary_light"
             android:text="Content"
             android:textColor="@android:color/white" />
 
@@ -57,7 +64,7 @@
         android:id="@+id/fabAddAudiobook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_add"
         android:layout_marginEnd="16dp"
         app:layout_anchorGravity="top|end"
         app:layout_anchor="@+id/llBottomSheet" />

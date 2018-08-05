@@ -10,4 +10,6 @@ interface MainMvpView : MvpView {
     fun onBottomSheetSlide(offset: Float)
 
     fun onAudiobooksUpdated(list: List<AudiobookEntry>)
+
+    fun showBackdrop(show: Boolean)
 }

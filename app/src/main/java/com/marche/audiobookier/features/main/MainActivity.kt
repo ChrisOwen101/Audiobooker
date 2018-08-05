@@ -2,22 +2,20 @@ package com.marche.audiobookier.features.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
-import com.marche.audiobookier.R
-import com.marche.audiobookier.data.local.LocalRepository
-import com.marche.audiobookier.features.base.BaseActivity
-import com.marche.audiobookier.util.FilePicker
-import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
+import android.view.Menu
+import android.view.MenuItem
+import android.view.animation.DecelerateInterpolator
 import com.jaiselrahman.filepicker.activity.FilePickerActivity
 import com.jaiselrahman.filepicker.model.MediaFile
+import com.marche.audiobookier.R
 import com.marche.audiobookier.data.model.AudiobookEntry
-import timber.log.Timber
-
+import com.marche.audiobookier.features.base.BaseActivity
+import com.marche.audiobookier.util.FilePicker
+import com.marche.audiobookier.util.ViewUtil
+import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainMvpView {
 
@@ -25,6 +23,8 @@ class MainActivity : BaseActivity(), MainMvpView {
     lateinit var mainPresenter: MainPresenter
 
     private val FILE_REQUEST_CODE = 111
+
+    private val layoutManager = LinearLayoutManager(this)
 
     override fun layoutId() = R.layout.activity_main
 
@@ -37,8 +37,9 @@ class MainActivity : BaseActivity(), MainMvpView {
 
         fabAddAudiobook.setOnClickListener { mainPresenter.onFABClicked() }
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(llBottomSheet)
-        bottomSheetBehavior.setBottomSheetCallback(mainPresenter.bottomSheetCallback)
+        BottomSheetBehavior
+                .from(llBottomSheet)
+                .setBottomSheetCallback(mainPresenter.bottomSheetCallback)
 
         mainPresenter.getAudiobooks()
     }
@@ -55,7 +56,7 @@ class MainActivity : BaseActivity(), MainMvpView {
 
     override fun onAudiobooksUpdated(list: List<AudiobookEntry>) {
         val adapter = AudiobookAdapter(list, this)
-        rvRecyclerView.layoutManager = LinearLayoutManager(this)
+        rvRecyclerView.layoutManager = layoutManager
         rvRecyclerView.adapter = adapter
     }
 
@@ -65,6 +66,20 @@ class MainActivity : BaseActivity(), MainMvpView {
 
     override fun onBottomSheetSlide(offset: Float) {
         fabAddAudiobook.animate().scaleX(1 - offset).scaleY(1 - offset).setDuration(0).start()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        mainPresenter.onMenuClicked(item.itemId)
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun showBackdrop(show: Boolean) {
+        rvRecyclerView.animate().setDuration(400).y(if(show) 500f else ViewUtil.getActionBarHeight(this)).setInterpolator(DecelerateInterpolator()).start()
     }
 
     override fun onDestroy() {
