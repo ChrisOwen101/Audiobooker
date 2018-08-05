@@ -1,15 +1,19 @@
 package com.marche.audiobookier.features.main
 
 import android.content.Context
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.marche.audiobookier.R
 import com.marche.audiobookier.data.model.AudiobookEntry
 import kotlinx.android.synthetic.main.audiobook_list_item.view.*
 
 class AudiobookAdapter(private val items : List<AudiobookEntry>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
+
+    fun getItems(): List<AudiobookEntry>{
+        return items
+    }
 
     override fun getItemCount(): Int {
         return items.size
