@@ -12,4 +12,6 @@ interface MainMvpView : MvpView {
     fun onAudiobooksUpdated(list: List<AudiobookEntry>)
 
     fun showBackdrop(show: Boolean)
+
+    fun showBottomSheet(show: Boolean)
 }

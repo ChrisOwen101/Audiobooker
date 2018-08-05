@@ -15,7 +15,8 @@ import javax.inject.Inject
 class MainPresenter @Inject
 constructor(private val dataManager: DataManager, private val localRepository: LocalRepository) : BasePresenter<MainMvpView>() {
 
-    var expanded = false
+    var headerExpanded = false
+    var bottomSheetExpanded = false
 
     val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {}
@@ -49,12 +50,21 @@ constructor(private val dataManager: DataManager, private val localRepository: L
         mvpView?.onAudiobooksUpdated(localRepository.getAllAudiobookEntries())
     }
 
+    fun showBottomSheet(show: Boolean){
+        mvpView?.showBottomSheet(show)
+    }
+
+    fun toggleBottomSheet(){
+        bottomSheetExpanded = !bottomSheetExpanded
+        mvpView?.showBottomSheet(bottomSheetExpanded)
+    }
+
     fun onMenuClicked(id: Int) : Boolean{
         checkViewAttached()
 
         return if (id == R.id.action_favorite) {
-            expanded = !expanded
-            mvpView?.showBackdrop(expanded)
+            headerExpanded = !headerExpanded
+            mvpView?.showBackdrop(headerExpanded)
             true
         } else {
             false

@@ -36,6 +36,7 @@ class MainActivity : BaseActivity(), MainMvpView {
         setSupportActionBar(tToolbar)
 
         fabAddAudiobook.setOnClickListener { mainPresenter.onFABClicked() }
+        sheetHeader.setOnClickListener { mainPresenter.toggleBottomSheet() }
 
         BottomSheetBehavior
                 .from(llBottomSheet)
@@ -80,6 +81,14 @@ class MainActivity : BaseActivity(), MainMvpView {
 
     override fun showBackdrop(show: Boolean) {
         rvRecyclerView.animate().setDuration(400).y(if(show) 500f else ViewUtil.getActionBarHeight(this)).setInterpolator(DecelerateInterpolator()).start()
+    }
+
+    override fun showBottomSheet(show: Boolean) {
+        BottomSheetBehavior.from(llBottomSheet).state = if(show) {
+            BottomSheetBehavior.STATE_EXPANDED
+        } else {
+            BottomSheetBehavior.STATE_COLLAPSED
+        }
     }
 
     override fun onDestroy() {
