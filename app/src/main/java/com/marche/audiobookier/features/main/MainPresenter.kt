@@ -59,12 +59,21 @@ constructor(private val dataManager: DataManager, private val localRepository: L
         mvpView?.showBottomSheet(bottomSheetExpanded)
     }
 
+    fun toggleBackDrop(){
+        headerExpanded = !headerExpanded
+        showBackDrop(headerExpanded)
+    }
+
+    fun showBackDrop(show: Boolean){
+        headerExpanded = show
+        mvpView?.showBackdrop(headerExpanded)
+    }
+
     fun onMenuClicked(id: Int) : Boolean{
         checkViewAttached()
 
         return if (id == R.id.action_favorite) {
-            headerExpanded = !headerExpanded
-            mvpView?.showBackdrop(headerExpanded)
+            toggleBackDrop()
             true
         } else {
             false

@@ -61,6 +61,11 @@ class MainActivity : BaseActivity(), MainMvpView {
                 })
         )
 
+        rvRecyclerView.setOnTouchListener { _, _ ->
+            mainPresenter.showBackDrop(false)
+            false
+        }
+
         BottomSheetBehavior
                 .from(pvBottomSheet)
                 .setBottomSheetCallback(mainPresenter.bottomSheetCallback)
