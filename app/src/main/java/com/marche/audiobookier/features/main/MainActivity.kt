@@ -26,6 +26,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_player.*
 import javax.inject.Inject
 
+
+
 class MainActivity : BaseActivity(), MainMvpView {
 
     @Inject
@@ -125,6 +127,7 @@ class MainActivity : BaseActivity(), MainMvpView {
 
     override fun onBottomSheetSlide(offset: Float) {
         fabAddAudiobook.animate().scaleX(1 - offset).scaleY(1 - offset).setDuration(0).start()
+        rvRecyclerView.animate().scaleX(1 - (offset/10)).scaleY(1 - (offset/10)).setDuration(0).start()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
